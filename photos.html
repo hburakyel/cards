@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Photos</title>
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-ERYNBX2ZL7"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-ERYNBX2ZL7");
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=0.9" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="style.css"
+    />
+    <style>
+      .image-grid2 {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin-left: -31px;
+        padding: 0;
+        margin-right: -30px;
+        margin-top: -60px;
+        margin-bottom: -60px;
+      }
+      .image-cell {
+        width: 20vw;
+        height: 21vw;
+        overflow: hidden;
+        margin: 0;
+      }
+      .image-cell img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .modal {
+        text-align: left;
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        background: white;
+        max-width: 100%;
+        height: 100%;
+        overflow: auto;
+        padding: 30px 30px;
+        overflow-x: hidden;
+        z-index: 9999;
+      }
+
+      .modal-content {
+        background-color: white;
+        width: 100%;
+      }
+
+      .modal-content img {
+        margin: -30px;
+        margin-bottom: 5px;
+        max-width: 100vw;
+        max-height: 85vh;
+      }
+
+      .close,
+      #prev-button,
+      #next-button {
+        position: absolute;
+        color: #aaa;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 5px;
+        font-family: Times, serif;
+        font-size: 1.2rem;
+        line-height: 1.2em;
+      }
+      .close {
+        top: 20px;
+        right: 20px;
+      }
+      #prev-button {
+        left: 20px;
+        padding-bottom: 20px;
+        position: fixed;
+        bottom: 0;
+      }
+      #next-button {
+        left: 120px;
+        padding-bottom: 20px;
+        position: fixed;
+        bottom: 0;
+      }
+      .close:hover,
+      #prev-button:hover,
+      #next-button:hover {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <a href=""><h2>Cards</h2></a>
+      </div>
+      <div class="menu-toggle"><h2>Menu</h2></div>
+    </header>
+    <nav>
+      <div class="menu-content">
+        <div class="menu-sections">
+          <a href="locations.html"
+            ><h2>Locations</h2></a
+          >
+          <a href="photos.html"
+            ><h2>Photos</h2></a
+          >
+          <a href="about.html"
+            ><h2>About</h2></a
+          >
+          <a href="donation.html"
+            ><h2>Donation</h2></a
+          >
+          <a
+            class="icon icon--fill header-icon header-icon-border-shape-none header-icon-border-style-outline"
+            href="https://www.instagram.com/cards.cards.cards/"
+            target="_blank"
+            aria-label="Instagram"
+          >
+            <svg
+              fill="#000000"
+              version="1.1"
+              id="Layer_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="24"
+              height="24"
+              style="margin-top: 2px"
+              viewBox="0 0 169.063 169.063"
+              xml:space="preserve"
+            >
+              <g>
+                <path
+                  d="M122.406,0H46.654C20.929,0,0,20.93,0,46.655v75.752c0,25.726,20.929,46.655,46.654,46.655h75.752
+		c25.727,0,46.656-20.93,46.656-46.655V46.655C169.063,20.93,148.133,0,122.406,0z M154.063,122.407
+		c0,17.455-14.201,31.655-31.656,31.655H46.654C29.2,154.063,15,139.862,15,122.407V46.655C15,29.201,29.2,15,46.654,15h75.752
+		c17.455,0,31.656,14.201,31.656,31.655V122.407z"
+                />
+                <path
+                  d="M84.531,40.97c-24.021,0-43.563,19.542-43.563,43.563c0,24.02,19.542,43.561,43.563,43.561s43.563-19.541,43.563-43.561
+		C128.094,60.512,108.552,40.97,84.531,40.97z M84.531,113.093c-15.749,0-28.563-12.812-28.563-28.561
+		c0-15.75,12.813-28.563,28.563-28.563s28.563,12.813,28.563,28.563C113.094,100.281,100.28,113.093,84.531,113.093z"
+                />
+                <path
+                  d="M129.921,28.251c-2.89,0-5.729,1.17-7.77,3.22c-2.051,2.04-3.23,4.88-3.23,7.78c0,2.891,1.18,5.73,3.23,7.78
+		c2.04,2.04,4.88,3.22,7.77,3.22c2.9,0,5.73-1.18,7.78-3.22c2.05-2.05,3.22-4.89,3.22-7.78c0-2.9-1.17-5.74-3.22-7.78
+		C135.661,29.421,132.821,28.251,129.921,28.251z"
+                />
+              </g>
+            </svg>
+          </a>
+        </div>
+        <div class="footer">
+                <div id="mc_embed_signup">
+        <form
+          action="https://glitch.us8.list-manage.com/subscribe/post?u=a6d17de0d4831e200d52c5c81&amp;id=5d3b0ad8f4&amp;f_id=00a5c3e1f0"
+          method="post"
+          id="mc-embedded-subscribe-form"
+          name="mc-embedded-subscribe-form"
+          target="_blank"
+        >
+          <p>Newsletter</p>
+          <div class="mc-field-group">
+            <input
+              type="email"
+              name="EMAIL"
+              class="required email"
+              id="mce-EMAIL"
+              placeholder=""
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="submit"
+              value="Subscribe"
+              name="subscribe"
+              id="mc-embedded-subscribe"
+              class="button"
+            />
+          </div>
+        </form>
+      </div>
+          <p>&copy; 2024 Cards. All Rights Reserved.</p>
+        </div>
+      </div>
+    </nav>
+    <div class="content">
+      <h2>Photos</h2>
+      <div class="image-grid2" id="images"></div>
+    </div>
+
+    <div class="modal" id="modal">
+      <div class="modal-content" id="modal-content">
+        <span class="close" id="close"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="30"
+            height="30"
+            viewBox="0 0 50 50"
+          >
+            <path
+              d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z"
+              fill="#aaa"
+            ></path></svg
+        ></span>
+        <img alt="Image" id="modal-image" />
+        <div class="image-info" id="image-info">
+          <p id="image-credit"></p>
+        </div>
+        <span id="prev-button">Previous</span>
+        <span id="next-button">Next</span>
+      </div>
+    </div>
+    <script>
+      document
+        .querySelector(".menu-toggle")
+        .addEventListener("click", function () {
+          var nav = document.querySelector("nav");
+          nav.classList.toggle("open");
+          if (nav.classList.contains("open")) {
+            document.querySelector(".menu-toggle").textContent = "Close";
+          } else {
+            document.querySelector(".menu-toggle").textContent = "Menu";
+          }
+        });
+    </script>
+    <script>
+      $(document).ready(function () {
+        var images = [];
+        var currentIndex = 0;
+
+        $.ajax({
+          type: "GET",
+          url: "https://docs.google.com/spreadsheets/d/1AiDoRneZQsH2Qswffd37SweB3dROV5Ozj6tr8_HYbas/gviz/tq?tqx=out:csv&sheet=Sheet1",
+          dataType: "text",
+          success: function (data) {
+            Papa.parse(data, {
+              complete: function (results) {
+                displayImages(results.data);
+              },
+              header: true,
+              skipEmptyLines: true,
+            });
+          },
+        });
+
+        function convertDriveLink(link) {
+          if (link.includes("drive.google.com/file/d/")) {
+            const fileId = link.match(/[-\w]{25,}/);
+            return fileId
+              ? `https://drive.google.com/thumbnail?id=${fileId[0]}&sz=w1000`
+              : link;
+          }
+          return link;
+        }
+
+        function displayImages(data) {
+          data.forEach(function (row) {
+            if (row.Documentation) {
+              var documentationLinks = row.Documentation.split(",");
+
+              documentationLinks.forEach(function (link) {
+                var trimmedLink = link.trim();
+                if (trimmedLink.startsWith("http")) {
+                  var imageUrl = convertDriveLink(trimmedLink);
+                  images.push({
+                    src: imageUrl,
+                    artist: row.Artist,
+                    cards: row.Cards,
+                    year: row.Year,
+                  });
+                }
+              });
+            }
+          });
+
+          images = shuffleArray(images);
+
+          images.forEach(function (image, index) {
+            var imageCell = `<div class="image-cell">
+      <img 
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" 
+        alt="Image" 
+        data-src="${image.src}" 
+        data-index="${index}" 
+        class="documentation-image"
+      >
+    </div>`;
+            $("#images").append(imageCell);
+          });
+
+          lazyLoadImages();
+
+          $(".documentation-image").click(function () {
+            var index = $(this).data("index");
+            showImage(index);
+          });
+        }
+
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        }
+
+        function showImage(index) {
+          var image = images[index];
+          if (image) {
+            $("#image-credit").text(
+              `${image.artist}, ${image.cards}, ${image.year}`
+            );
+            $("#modal-image").attr("src", image.src);
+            currentIndex = index;
+            $("#modal").show();
+            $("body").addClass("no-scroll"); // Disable background scroll
+          }
+        }
+
+        $("#close").click(function () {
+          $("#modal").hide();
+          $("body").removeClass("no-scroll"); // Enable background scroll
+        });
+
+        $("#prev-button").click(function () {
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          showImage(currentIndex);
+        });
+
+        $("#next-button").click(function () {
+          currentIndex = (currentIndex + 1) % images.length;
+          showImage(currentIndex);
+        });
+
+        function lazyLoadImages() {
+          const observer = new IntersectionObserver(
+            (entries, observer) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  const img = entry.target;
+                  img.src = img.dataset.src; // Set the actual image source
+                  observer.unobserve(img); // Stop observing once loaded
+                }
+              });
+            },
+            { rootMargin: "100px" }
+          );
+
+          $(".documentation-image").each(function () {
+            observer.observe(this); // Start observing each image
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
