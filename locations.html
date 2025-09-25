@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.9" />
+    <title>Locations</title>
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-ERYNBX2ZL7"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-ERYNBX2ZL7");
+    </script>
+    <link
+      rel="stylesheet"
+      href="style.css"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <style>
+      .mapboxgl-canvas {
+        opacity: 1;
+      }
+      .mapboxgl-popup-content {
+        position: relative;
+        background: #fff;
+        border-radius: 3px;
+        box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.2);
+        pointer-events: auto;
+        margin: 0;
+        padding: 0;
+        width: 240px;
+        height: 334px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        grid-gap: 5px;
+        top: -20px;
+      }
+      .mapboxgl-ctrl-bottom-right {
+        visibility: hidden;
+      }
+      .mapboxgl-ctrl-bottom-left {
+        visibility: hidden;
+      }
+      .image-grid {
+        display: flex;
+        flex-wrap: wrap-reverse;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
+        grid-gap: 10px;
+      }
+      .image-cell {
+        border-radius: 2px;
+        margin-bottom: 8px;
+        padding: 4px 4px 0 4px;
+        background: #ffffff;
+      }
+      .image-grid img {
+        max-width: 330px;
+        height: 460px;
+      }
+      .modal-content img {
+        padding: 0;
+      }
+      .modal-content img {
+      }
+      .modal {
+        text-align: left;
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        background: white;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        padding: 30px 30px;
+        overflow-x: hidden; /* Disable horizontal scrolling */
+      }
+      .close {
+        color: #aaa;
+        float: top;
+        font-size: 1.5rem;
+        font-weight: normal;
+        position: fixed;
+        top: 0;
+        right: 0;
+        padding: 30px;
+      }
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .documentation-image {
+        width: 33.31vw;
+        height: 33.31vw;
+        object-fit: cover;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+      }
+      /* Adjusted grid layout for documentation images */
+      .documentation-grid {
+      }
+      /* New CSS styles for card info */
+      .image-info {
+        position: absolute;
+        bottom: 110;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+        visibility: hidden;
+      }
+      .image-info p {
+        margin: 0;
+      }
+      /* Remove blue outline on links */
+      a {
+        outline: none;
+        text-decoration: none;
+      }
+      a img {
+        border: none;
+        border-radius: 5px;
+      }
+      .mapboxgl-popup-tip {
+        width: 0;
+        height: 0;
+        border: 0 solid transparent;
+        z-index: 0;
+      }
+
+      .cover {
+        margin: -30px;
+      }
+
+      .cover img {
+        width: 100vw; /* Ensures the image takes the full viewport width */
+        max-height: 70vh;
+        object-fit: cover;
+        margin: 0;
+        padding: 0;
+      }
+
+      .modal-text {
+        padding-top: 50px;
+        max-width: 600px;
+        margin: 0 auto; /* Centers the modal text */
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <a href=""><h2>Cards</h2></a>
+      </div>
+      <div class="menu-toggle"><h2>Menu</h2></div>
+    </header>
+    <nav>
+      <div class="menu-content">
+        <div class="menu-sections">
+          <a href="locations.html"
+            ><h2>Locations</h2></a
+          >
+          <a href="photos.html"
+            ><h2>Photos</h2></a
+          >
+          <a href="about.html"
+            ><h2>About</h2></a
+          >
+          <a href="donation.html"
+            ><h2>Donation</h2></a
+          >
+          <a
+            class="icon icon--fill header-icon header-icon-border-shape-none header-icon-border-style-outline"
+            href="https://www.instagram.com/cards.cards.cards/"
+            target="_blank"
+            aria-label="Instagram"
+          >
+            <svg
+              fill="#000000"
+              version="1.1"
+              id="Layer_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="24"
+              height="24"
+              style="margin-top: 2px"
+              viewBox="0 0 169.063 169.063"
+              xml:space="preserve"
+            >
+              <g>
+                <path
+                  d="M122.406,0H46.654C20.929,0,0,20.93,0,46.655v75.752c0,25.726,20.929,46.655,46.654,46.655h75.752
+		c25.727,0,46.656-20.93,46.656-46.655V46.655C169.063,20.93,148.133,0,122.406,0z M154.063,122.407
+		c0,17.455-14.201,31.655-31.656,31.655H46.654C29.2,154.063,15,139.862,15,122.407V46.655C15,29.201,29.2,15,46.654,15h75.752
+		c17.455,0,31.656,14.201,31.656,31.655V122.407z"
+                />
+                <path
+                  d="M84.531,40.97c-24.021,0-43.563,19.542-43.563,43.563c0,24.02,19.542,43.561,43.563,43.561s43.563-19.541,43.563-43.561
+		C128.094,60.512,108.552,40.97,84.531,40.97z M84.531,113.093c-15.749,0-28.563-12.812-28.563-28.561
+		c0-15.75,12.813-28.563,28.563-28.563s28.563,12.813,28.563,28.563C113.094,100.281,100.28,113.093,84.531,113.093z"
+                />
+                <path
+                  d="M129.921,28.251c-2.89,0-5.729,1.17-7.77,3.22c-2.051,2.04-3.23,4.88-3.23,7.78c0,2.891,1.18,5.73,3.23,7.78
+		c2.04,2.04,4.88,3.22,7.77,3.22c2.9,0,5.73-1.18,7.78-3.22c2.05-2.05,3.22-4.89,3.22-7.78c0-2.9-1.17-5.74-3.22-7.78
+		C135.661,29.421,132.821,28.251,129.921,28.251z"
+                />
+              </g>
+            </svg>
+          </a>
+        </div>
+        <div class="footer">
+                <div id="mc_embed_signup">
+        <form
+          action="https://glitch.us8.list-manage.com/subscribe/post?u=a6d17de0d4831e200d52c5c81&amp;id=5d3b0ad8f4&amp;f_id=00a5c3e1f0"
+          method="post"
+          id="mc-embedded-subscribe-form"
+          name="mc-embedded-subscribe-form"
+          target="_blank"
+        >
+          <p>Newsletter</p>
+          <div class="mc-field-group">
+            <input
+              type="email"
+              name="EMAIL"
+              class="required email"
+              id="mce-EMAIL"
+              placeholder=""
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="submit"
+              value="Subscribe"
+              name="subscribe"
+              id="mc-embedded-subscribe"
+              class="button"
+            />
+          </div>
+        </form>
+      </div>
+          <p>&copy; 2024 Cards. All Rights Reserved.</p>
+        </div>
+      </div>
+    </nav>
+    <div class="content">
+      <h2>Locations</h2>
+      <br /><br /><br />
+      <div id="map"></div>
+    </div>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <p class="close" id="close">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="30"
+            height="30"
+            viewBox="0 0 50 50"
+          >
+            <path
+              d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z"
+              fill="#aaa"
+            ></path>
+          </svg>
+        </p>
+        <div id="modal-content"></div>
+      </div>
+    </div>
+    <!-- Include necessary JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://npmcdn.com/csv2geojson@latest/csv2geojson.js"></script>
+    <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
+    <script>
+      document
+        .querySelector(".menu-toggle")
+        .addEventListener("click", function () {
+          var nav = document.querySelector("nav");
+          nav.classList.toggle("open");
+          if (nav.classList.contains("open")) {
+            document.querySelector(".menu-toggle").textContent = "Close";
+          } else {
+            document.querySelector(".menu-toggle").textContent = "Menu";
+          }
+        });
+    </script>
+    <script>
+      var transformRequest = (url, resourceType) => {
+        var isMapboxRequest =
+          url.slice(8, 22) === "api.mapbox.com" ||
+          url.slice(10, 26) === "tiles.mapbox.com";
+        return {
+          url: isMapboxRequest
+            ? url.replace("?", "?pluginName=sheetMapper&")
+            : url,
+        };
+      };
+
+      mapboxgl.accessToken =
+        "pk.eyJ1IjoiaGJ1cmFreWVsIiwiYSI6ImNsczRtbGsxcDE0NmUybHBjbTc5a2Zpd3IifQ.HhQTEOiHb6563LFMUlNkpQ"; // Mapbox token
+      var map = new mapboxgl.Map({
+        container: "map", // container id
+        style: "mapbox://styles/hburakyel/cm2xdfgof00qq01pm0v6u0dpm", // Mapbox style
+        center: [8.68417, 50.11552], // starting position [lng, lat]
+        zoom: 12, // starting zoom
+        transformRequest: transformRequest,
+      });
+
+      var lastPopup = null; // Keep track of the last opened popup
+      var locationsData = null;
+
+      $(document).ready(function () {
+        $.ajax({
+          type: "GET",
+          url: "https://docs.google.com/spreadsheets/d/1AiDoRneZQsH2Qswffd37SweB3dROV5Ozj6tr8_HYbas/gviz/tq?tqx=out:csv&sheet=Sheet1",
+          dataType: "text",
+          success: function (csvData) {
+            makeGeoJSON(csvData);
+          },
+        });
+
+        function convertDriveLink(link) {
+          if (link.includes("drive.google.com/file/d/")) {
+            const fileId = link.match(/[-\w]{25,}/);
+            return fileId
+              ? `https://drive.google.com/thumbnail?id=${fileId[0]}&sz=w1000`
+              : link;
+          }
+          return link;
+        }
+
+        function makeGeoJSON(csvData) {
+          csv2geojson.csv2geojson(
+            csvData,
+            { latfield: "Latitude", lonfield: "Longitude", delimiter: "," },
+            function (err, data) {
+              locationsData = data;
+              map.on("load", function () {
+                var randomIndex = Math.floor(
+                  Math.random() * data.features.length
+                );
+                var randomFeature = data.features[randomIndex];
+
+                data.features.forEach(function (feature, index) {
+                  var coordinates = feature.geometry.coordinates.slice();
+                  var properties = feature.properties;
+
+                  var hash = `#${encodeURIComponent(
+                    properties.Artist.replace(/ /g, "-")
+                  )}/${encodeURIComponent(
+                    properties.Cards.replace(/ /g, "-")
+                  )}`;
+                  var imageUrl = convertDriveLink(properties.Image);
+
+                  var description = `
+                <a href="${hash}" class="popup-link" data-cards="${properties.Cards}" 
+                   data-artist="${properties.Artist}" 
+                   data-date="${properties.Date}" 
+                   data-about="${properties.About}" 
+                   data-website="${properties.Website}" 
+                   data-documentation="${properties.Documentation}" 
+                   data-image="${imageUrl}">
+                  <img src="${imageUrl}" alt="Location Image" style="width: 100%; height: auto;">
+                </a>`;
+
+                  var popup = new mapboxgl.Popup().setHTML(description);
+                  var marker = new mapboxgl.Marker()
+                    .setLngLat(coordinates)
+                    .setPopup(popup)
+                    .addTo(map);
+
+                  marker.getElement().addEventListener("click", function () {
+                    map.flyTo({
+                      center: coordinates,
+                      zoom: 15,
+                      essential: true,
+                    });
+                  });
+
+                  if (index === randomIndex) {
+                    map.flyTo({
+                      center: coordinates,
+                      zoom: 15,
+                      essential: true,
+                    });
+                    popup.addTo(map);
+                    lastPopup = popup;
+                  }
+                });
+
+                handleUrlHash();
+              });
+            }
+          );
+        }
+
+        $(document).on("click", ".popup-link", function (event) {
+          event.preventDefault();
+          var cards = $(this).data("cards");
+          var artist = $(this).data("artist");
+          var date = $(this).data("date");
+          var about = $(this).data("about");
+          var website = $(this).data("website");
+          var documentation = $(this).data("documentation");
+          var imageUrl = $(this).data("image");
+
+          openModal(
+            cards,
+            artist,
+            date,
+            about,
+            website,
+            documentation,
+            imageUrl
+          );
+
+          var modalLink = `#${encodeURIComponent(
+            artist.replace(/ /g, "-")
+          )}/${encodeURIComponent(cards.replace(/ /g, "-"))}`;
+          window.location.hash = modalLink;
+        });
+
+        function openModal(
+          cards,
+          artist,
+          date,
+          about,
+          website,
+          documentation,
+          imageUrl
+        ) {
+          var formattedAbout = about
+            ? about.replace(/\n/g, "<br>")
+            : "Upcoming";
+          var documentationHtml = generateDocumentationHtml(documentation);
+
+          var modalContent = `
+        <div>
+          <div class="cover">
+            <img src="${
+              documentationHtml.randomImage || imageUrl
+            }" alt="Random Documentation">
+          </div>
+          <div class="modal-text">
+            <h2>${cards}</h2>
+            <h2>${artist}</h2><br>
+            <p><em>${date}</em></p><br>
+            <p>${formattedAbout}</p><br>
+            <p>&#128279; <a href="${website}" target="_blank" class="button">Artist Link</a></p>
+          </div>
+          <div class="documentation-grid">
+            ${documentationHtml.rest}
+          </div>
+        </div>
+      `;
+
+          $("#modal-content").html(modalContent);
+          $(".modal").css("display", "block");
+          $("body").addClass("no-scroll"); // Disable background scroll
+        }
+
+        function generateDocumentationHtml(documentation) {
+          var documentationHtml = { randomImage: "", rest: "" };
+          if (documentation && documentation.trim() !== "") {
+            var documentationLinks = documentation.split(",");
+            documentationLinks = documentationLinks.filter(
+              (link) => link.trim() !== ""
+            );
+            if (documentationLinks.length > 0) {
+              var randomIndex = Math.floor(
+                Math.random() * documentationLinks.length
+              );
+              var firstLink = documentationLinks
+                .splice(randomIndex, 1)[0]
+                .trim();
+              firstLink = convertDriveLink(firstLink);
+              if (firstLink.startsWith("http"))
+                documentationHtml.randomImage = firstLink;
+              documentationLinks.forEach(function (link) {
+                var convertedLink = convertDriveLink(link.trim());
+                if (convertedLink.startsWith("http")) {
+                  documentationHtml.rest += `<img src="${convertedLink}" alt="Documentation" class="documentation-image">`;
+                }
+              });
+            }
+          }
+          return documentationHtml;
+        }
+
+        $(document).on("click", ".close", function () {
+          $(".modal").css("display", "none");
+          window.history.pushState({}, "", "/locations.html");
+        });
+
+        function handleUrlHash() {
+          var hash = window.location.hash;
+          if (hash && locationsData) {
+            var path = decodeURIComponent(hash.substring(1)).split("/");
+            if (path.length === 2 && path[0] && path[1]) {
+              var artist = decodeURIComponent(path[0]).replace(/-/g, " ");
+              var cards = decodeURIComponent(path[1]).replace(/-/g, " ");
+
+              var matchingFeature = locationsData.features.find(function (
+                feature
+              ) {
+                return (
+                  feature.properties.Artist.normalize("NFD").replace(
+                    /[\u0300-\u036f]/g,
+                    ""
+                  ) ===
+                    artist.normalize("NFD").replace(/[\u0300-\u036f]/g, "") &&
+                  feature.properties.Cards === cards
+                );
+              });
+
+              if (matchingFeature) {
+                var coordinates = matchingFeature.geometry.coordinates.slice();
+                var properties = matchingFeature.properties;
+
+                openModal(
+                  properties.Cards,
+                  properties.Artist,
+                  properties.Date,
+                  properties.About,
+                  properties.Website,
+                  properties.Documentation,
+                  convertDriveLink(properties.Image)
+                );
+                map.flyTo({ center: coordinates, zoom: 15, essential: true });
+              }
+            }
+          }
+        }
+
+        $(window).on("hashchange", function () {
+          handleUrlHash();
+        });
+      });
+    </script>
+  </body>
+</html>
