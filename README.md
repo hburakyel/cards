@@ -1,17 +1,6 @@
 Cards
 
-Cards is an experimental curatorial project with pop-up exhibitions in unexpected urban spaces — such as traffic signs, park benches, and building forecourts.  
-
-Each “Card” exhibition begins with an invitation for a visual artist to create a short-lived intervention outside traditional art institutions. The goal is to make contemporary art accessible to different audiences, encouraging unconventional interactions and transforming public perceptions of art.
-
-Curated by Andrés Gorzycki
-
-
-
-Website
-
-The dedicated website for the *Cards* project, designed and developed by Studio ABO.  
-This digital platform serves as a comprehensive repository for documentation, locations, and archives of each *Cards* edition.  
+Cards is an experimental curatorial project with pop-up exhibitions in unexpected urban spaces curated by Andrés Gorzycki. Each “Card” exhibition begins with an invitation for a visual artist to create a short-lived intervention outside traditional art institutions. The goal is to make contemporary art accessible to different audiences, encouraging unconventional interactions and transforming public perceptions of art. This digital platform serves as a comprehensive repository for documentation, locations, and archives of each *Cards* edition.  
 
 Explore the site here: [cards-cards-cards.link](http://cards-cards-cards.link/)
 
