@@ -4,9 +4,9 @@ Cards is an experimental curatorial project with pop-up exhibitions in unexpecte
 
 Each “Card” exhibition begins with an invitation for a visual artist to create a short-lived intervention outside traditional art institutions. The goal is to make contemporary art accessible to different audiences, encouraging unconventional interactions and transforming public perceptions of art.
 
-Curated by Andres Gorzycki
+Curated by Andrés Gorzycki
 
----
+
 
 Website
 
@@ -15,7 +15,7 @@ This digital platform serves as a comprehensive repository for documentation, lo
 
 Explore the site here: [cards-cards-cards.link](http://cards-cards-cards.link/)
 
----
+
 
 License
 
