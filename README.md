@@ -4,37 +4,16 @@
 
 Each “Card” exhibition begins with an invitation for a visual artist to create a short-lived intervention outside traditional art institutions. The goal is to make contemporary art accessible to different audiences, encouraging unconventional interactions and transforming public perceptions of art.
 
-Since its inception in **May 2022** with *Sebastián Garbrecht*, the project has featured remarkable collaborations with artists such as:
-
-- Alina Perkins  
-- Clyde Conwell  
-- Maximiliano Siñani  
-- Blaykyi Kenyah  
-- Tomas Maglione  
-- Mia Superstar  
-- Felipe Alvarez Parisi  
-- Commune 6x3  
-- Jack Brennan  
-- Sopo Kashakashvili  
-- Lisa Gutscher  
-- Nina Nadig  
-- Gašper Kunšič  
-- Rahel Goetsch  
-- Yuxiu Xiong  
-- Tong Yang  
-- Hemansingh Lutchmun  
-- Barbi Latina  
-
 Curated by **Andres Gorzycki**
 
 ---
 
 ## Website
 
-We’re delighted to share the launch of the dedicated website for the *Cards* project, designed and developed by **Studio ABO**.  
+The dedicated website for the *Cards* project, designed and developed by **Studio ABO**.  
 This digital platform serves as a comprehensive repository for documentation, locations, and archives of each *Cards* edition.  
 
-👉 Explore the site here: [cards-cards-cards.link](http://cards-cards-cards.link/)
+Explore the site here: [cards-cards-cards.link](http://cards-cards-cards.link/)
 
 ---
 
