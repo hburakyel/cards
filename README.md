@@ -1,6 +1,6 @@
 Cards
 
-"Cards" is an experimental, itinerant art project that transforms public spaces into sites of urban ritual—curated by Andrés Gorzycki as a series of fleeting, one-day exhibitions. Each iteration invites a contemporary artist to intervene in an unexpected location: the shore of a river, a traffic sign, or a park bench. These ephemeral acts reactivate the city as a stage for collective encounters, where art becomes a shared ritual—visible one moment, vanished the next, yet lingering in memory.
+*Cards* is an experimental, itinerant art project that transforms public spaces into sites of urban ritual—curated by Andrés Gorzycki as a series of fleeting, one-day exhibitions. Each iteration invites a contemporary artist to intervene in an unexpected location: the shore of a river, a traffic sign, or a park bench. These ephemeral acts reactivate the city as a stage for collective encounters, where art becomes a shared ritual—visible one moment, vanished the next, yet lingering in memory.
 
 Initiated in May 2022 the project has since collaborated with 27 artists between Berlin, Buenos Aires, Frankfurt am Main, Prague, Posadas and Stockholm. By occupying marginal or overlooked spaces, Cards rejects institutional timelines, embracing spontaneity: exhibitions often materialize days after a studio visit, free from traditional curatorial constraints. The project fosters direct engagement—artists are present, audiences become participants, and the city itself co-authors the work.
 
