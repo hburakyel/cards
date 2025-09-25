@@ -1,27 +1,27 @@
-# Cards
+Cards
 
-**Cards** is an experimental curatorial project with pop-up exhibitions in unexpected urban spaces — such as traffic signs, park benches, and building forecourts.  
+Cards is an experimental curatorial project with pop-up exhibitions in unexpected urban spaces — such as traffic signs, park benches, and building forecourts.  
 
 Each “Card” exhibition begins with an invitation for a visual artist to create a short-lived intervention outside traditional art institutions. The goal is to make contemporary art accessible to different audiences, encouraging unconventional interactions and transforming public perceptions of art.
 
-Curated by **Andres Gorzycki**
+Curated by Andres Gorzycki
 
 ---
 
-## Website
+Website
 
-The dedicated website for the *Cards* project, designed and developed by **Studio ABO**.  
+The dedicated website for the *Cards* project, designed and developed by Studio ABO.  
 This digital platform serves as a comprehensive repository for documentation, locations, and archives of each *Cards* edition.  
 
 Explore the site here: [cards-cards-cards.link](http://cards-cards-cards.link/)
 
 ---
 
-## License
+License
 
 MIT License  
 
-Copyright (c) 2024 **Andrés Gorzycki**
+Copyright (c) 2024 Andrés Gorzycki
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
