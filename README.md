@@ -1,6 +1,14 @@
 Cards
 
-Cards is an experimental curatorial project with pop-up exhibitions in unexpected urban spaces curated by Andrés Gorzycki. Each “Card” exhibition begins with an invitation for a visual artist to create a short-lived intervention outside traditional art institutions. The goal is to make contemporary art accessible to different audiences, encouraging unconventional interactions and transforming public perceptions of art. This digital platform serves as a comprehensive repository for documentation, locations, and archives of each *Cards* edition.  
+"Cards" is an experimental, itinerant art project that transforms public spaces into sites of urban ritual—curated by Andrés Gorzycki as a series of fleeting, one-day exhibitions. Each iteration invites a contemporary artist to intervene in an unexpected location: the shore of a river, a traffic sign, or a park bench. These ephemeral acts reactivate the city as a stage for collective encounters, where art becomes a shared ritual—visible one moment, vanished the next, yet lingering in memory.
+
+Initiated in May 2022 the project has since collaborated with 27 artists between Berlin, Buenos Aires, Frankfurt am Main, Prague, Posadas and Stockholm. By occupying marginal or overlooked spaces, Cards rejects institutional timelines, embracing spontaneity: exhibitions often materialize days after a studio visit, free from traditional curatorial constraints. The project fosters direct engagement—artists are present, audiences become participants, and the city itself co-authors the work.
+
+Each Card derives its name from both the physical supports that display the artworks—objects like Streetlight, Stones, String, and Rope—and from Sara Ahmed’s queer phenomenological approach to orientation. In Queer Phenomenology, Ahmed examines how objects gather histories and redirect attention; here, these mundane yet charged objects (lampposts, benches, etc.) become sites where marginalized artistic gestures are reoriented from periphery to center, thus bringing what is "behind" to the front.
+
+The trading-card visual identity (inspired by Magic the Gathering, YuGiOh or Pokémon) mirrors the project’s ethos: each poster is a collectible artifact, a trace of these transient rituals. Cards targets both art enthusiasts and accidental passersby, dissolving barriers between contemporary art and daily life. Through these deliberate yet impermanent acts, the project redefines how we inhabit, perceive, and ritualize public space.
+
+This open source digital platform serves as a comprehensive repository for documentation, locations, and archives of each *Cards* edition.  
 
 Explore the site here: [cards-cards-cards.link](http://cards-cards-cards.link/)
 
