@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: Yugioh;
-  src: url(https://cdn.glitch.global/c2cb8555-e6eb-4d59-9c48-bdf7ab72a367/Yu-Gi-Oh!MatrixSmallCaps1.ttf?v=1712442660953);
+  src: url("/Yu-Gi-Oh!MatrixSmallCaps1.ttf") format("truetype");
 }
 
 /* Apply styles to the body */
