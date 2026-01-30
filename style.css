@@ -173,18 +173,19 @@ a:focus {
 
 /* Additional styles can be added as needed */
 .mapboxgl-ctrl-bottom-right {
-  right: -100px;
-  bottom: -100px;
+  right: 10px; 
+  bottom: 10px;
+  visibility: visible !important;
+}
+
+.mapboxgl-ctrl-bottom-left {
+  visibility: visible !important;
 }
 
 a.mapboxgl-ctrl-logo {
-  width: 0px;
+  width: 88px; /* Standard Mapbox logo width */
   height: 23px;
-  margin: 0 0 -4px -4px;
-  display: block;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  overflow: hidden;
+  display: block !important;
 }
 
 .mapboxgl-popup-content {
