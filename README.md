@@ -2,8 +2,6 @@ Cards
 
 *Cards* is an experimental, itinerant art project curated by Andrés Gorzycki. It transforms public spaces into sites of urban ritual through fleeting, one-day exhibitions. Since 2022, the project has collaborated with 27 artists across Berlin, Buenos Aires, Frankfurt, Prague, and Stockholm.
 
-The Design Engineering Angle
-
 This repository serves as the project’s comprehensive digital archive and spatial index. The goal was to build a high-flexibility, zero-cost publishing workflow that rejects heavy institutional backends in favor of accessible, non-specialized tools.
 
 Logic: A custom digital platform designed to archive transient, ephemeral art events.
