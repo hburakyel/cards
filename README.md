@@ -14,7 +14,7 @@ Visual Identity: The UI mirrors the "trading-card" ethos conceptualized by the c
 
 Philosophy: Grounded in Sara Ahmed’s Queer Phenomenology, using mundane objects (Streetlights, Stones, Rope) to reorient marginalized artistic gestures from the periphery to the center.
 
-Live Archive: cards-cards-cards.link
+Live Archive: <https://cards-cards-cards.link>
 
 
 
